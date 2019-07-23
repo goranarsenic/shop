@@ -1,0 +1,22 @@
+{
+    "extends": [
+      "tslint:latest",
+      "tslint-react",
+      "tslint-eslint-rules",
+      "tslint-config-prettier"
+    ],
+    "rules": {
+      "ordered-imports": false,
+      "no-var-requires": false,
+      "object-literal-sort-keys": false,
+      "jsx-no-multiline-js": false,
+      "no-implicit-dependencies": [true, "dev"],
+      "max-classes-per-file": false,
+      "member-access": [true, "no-public"],
+      "no-submodule-imports": false
+    },
+    "linterOptions": {
+      "exclude": ["coverage/**"]
+    }
+  }
+  

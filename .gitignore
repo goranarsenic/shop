@@ -1,0 +1,26 @@
+root = true
+
+# Editor-specific
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+.settings
+.vs
+
+# dependencies
+node_modules
+typings/
+
+#output
+dist
+
+# testing
+coverage
+
+# misc
+.DS_Store
+npm-debug.log
+yarn-error.log
+.idea
+# .env
