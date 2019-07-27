@@ -1,0 +1,22 @@
+.container {
+  .search-container {
+  }
+  .loader-container {
+  }
+  .error-container {
+  }
+  .products-container {
+    .product-search-info-container {
+      .search-text {
+      }
+    }
+    .products {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      .product {
+        width: 25%;
+      }
+    }
+  }
+}

@@ -23,4 +23,6 @@ coverage
 npm-debug.log
 yarn-error.log
 .idea
-# .env
+
+# env
+.env

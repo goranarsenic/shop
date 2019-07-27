@@ -1,12 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
 
 import Root from "./components/Root";
+import configureStore from "./store";
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Root />
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+const store = configureStore();
+ReactDOM.render(<Root store={store} />, document.getElementById("root"));
