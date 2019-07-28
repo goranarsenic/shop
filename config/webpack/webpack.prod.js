@@ -1,10 +1,12 @@
-const common = require('./webpack.common')
-const merge = require('webpack-merge')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const { root } = require("../path.config");
-
+const common = require("./webpack.common");
+const merge = require("webpack-merge");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = merge(common, {
-    mode: "production",
-    plugins: [new CleanWebpackPlugin(['dist'], {root: root})]
-})
+  mode: "production",
+  plugins: [
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ["dist"]
+    })
+  ]
+});
