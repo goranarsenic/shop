@@ -1,13 +1,15 @@
 import React from "react";
-
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Online shop</h1>
-      </div>
-    );
-  }
-}
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Products from "../../containers/Products";
+import "../../styles/styles.scss";
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact={true} path="/" component={Products} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
 export default App;

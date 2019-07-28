@@ -1,21 +1,16 @@
 import React from "react";
-import {
-  withRouter,
-  RouteComponentProps,
-  Switch,
-  Route
-} from "react-router-dom";
+import { Provider } from "react-redux";
 
 import App from "../App";
+import { Store } from "redux";
 
-class Root extends React.Component<RouteComponentProps> {
-  render() {
-    return (
-      <Switch>
-        <Route path="/" component={App} />
-      </Switch>
-    );
-  }
+interface IProps {
+  store: Store<any, any>;
 }
+const Root = (props: IProps) => (
+  <Provider store={props.store}>
+    <App />
+  </Provider>
+);
 
-export default withRouter(Root);
+export default Root;
