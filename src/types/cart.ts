@@ -9,4 +9,5 @@ export interface ICartProduct {
 export interface ICartStore {
   readonly products: ICartProduct[];
   readonly total: number;
+  readonly isCartShown: boolean;
 }

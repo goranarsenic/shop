@@ -3,7 +3,8 @@ import { ICartProduct } from "../../types/cart";
 import {
   ADD_PRODUCT,
   REMOVE_PRODUCT,
-  UPDATE_QUANTITY
+  UPDATE_QUANTITY,
+  TOGGLE_CART_MODAL
 } from "./../../constants/cart";
 
 const addProduct = (product: ICartProduct): ActionTypes.IAddProduct => ({
@@ -27,4 +28,8 @@ const updateQuantity = (
   }
 });
 
-export { addProduct, removeProduct, updateQuantity };
+const toggleCartModal = (): ActionTypes.IToggleCartModal => ({
+  type: TOGGLE_CART_MODAL
+});
+
+export { addProduct, removeProduct, updateQuantity, toggleCartModal };

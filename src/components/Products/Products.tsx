@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Product from "./Product";
+import Modal from "../Modal";
+import Cart from "../Cart";
 
 import { IProduct } from "../../types/products";
 import { ICartStore, ICartProduct } from "../../types/cart";
@@ -17,6 +19,7 @@ interface IProps {
   addProduct: (product: ICartProduct) => any;
   removeProduct: (sku: number) => any;
   updateQuantity: (sku: number, quantity: number) => any;
+  toggleCartModal: () => any;
 }
 
 interface IState {
@@ -29,10 +32,29 @@ class Products extends Component<IProps, IState> {
   };
 
   render() {
-    const { isFetching, error, products, searchText } = this.props;
+    const {
+      isFetching,
+      error,
+      products,
+      searchText,
+      toggleCartModal,
+      cart,
+      updateQuantity,
+      removeProduct
+    } = this.props;
 
     return (
       <div className="container">
+        <div className="header-container">
+          <div className="logo-container">
+            <p>Online Shop</p>
+          </div>
+          <div className="cart-button-container">
+            <button type="button" className="btn" onClick={toggleCartModal}>
+              Cart
+            </button>
+          </div>
+        </div>
         <div className="search-container">
           <form onSubmit={this.handleSubmit}>
             <input
@@ -41,11 +63,24 @@ class Products extends Component<IProps, IState> {
               onChange={this.handleChange}
               value={this.state.searchText}
             />
+            <button type="submit" className="btn">
+              Search
+            </button>
           </form>
         </div>
         {isFetching && this.renderLoader()}
         {error && this.renderError(error)}
         {!isFetching && !error && this.renderProducts(products, searchText)}
+        {cart.isCartShown && (
+          <Modal closeModal={toggleCartModal}>
+            <Cart
+              closeModal={toggleCartModal}
+              cart={cart}
+              updateQuantity={updateQuantity}
+              removeProduct={removeProduct}
+            />
+          </Modal>
+        )}
       </div>
     );
   }
@@ -53,7 +88,7 @@ class Products extends Component<IProps, IState> {
   private renderLoader = () => {
     return (
       <div className="loader-container">
-        <p>Loading!</p>
+        <p>Loading...</p>
       </div>
     );
   };
@@ -71,7 +106,9 @@ class Products extends Component<IProps, IState> {
       <div className="products-container">
         {!!searchText.length && (
           <div className="product-search-info-container">
-            <p>Results for: {searchText}</p>
+            <p>
+              Results for: <span className="search-text">{searchText}</span>
+            </p>
           </div>
         )}
         {!!products.length && (

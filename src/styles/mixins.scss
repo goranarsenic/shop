@@ -1,0 +1,64 @@
+// Font families
+@mixin nunito {
+  font-family: "Nunito";
+  font-weight: 400;
+}
+
+@mixin nunito-light {
+  font-family: "Nunito";
+  font-weight: 600;
+}
+
+@mixin nunito-medium {
+  font-family: "Nunito";
+  font-weight: 600;
+}
+
+@mixin nunito-extra-bold {
+  font-family: "Nunito";
+  font-weight: 800;
+}
+
+// Headings
+@mixin heading-extra-large {
+  @include nunito-extra-bold();
+  font-size: $heading-lg;
+  line-height: normal;
+}
+
+@mixin heading-large {
+  @include nunito-extra-bold();
+  font-size: $heading-md;
+  line-height: 31px;
+}
+
+@mixin heading-medium {
+  @include nunito-extra-bold();
+  font-size: $heading-sm;
+  line-height: normal;
+}
+
+@mixin heading-small {
+  @include nunito-extra-bold();
+  font-size: $heading-xs;
+  line-height: normal;
+}
+
+// Labels
+@mixin label-large {
+  @include nunito();
+  font-size: $label-lg;
+  line-height: normal;
+}
+
+@mixin label-medium {
+  @include nunito();
+  font-size: $label-md;
+  line-height: normal;
+}
+
+@mixin label-small {
+  @include nunito();
+  font-size: $label-sm;
+  line-height: normal;
+}

@@ -1,7 +1,8 @@
 import {
   ADD_PRODUCT,
   REMOVE_PRODUCT,
-  UPDATE_QUANTITY
+  UPDATE_QUANTITY,
+  TOGGLE_CART_MODAL
 } from "./../../constants/cart";
 import { ICartProduct } from "../../types/cart";
 
@@ -21,4 +22,12 @@ export interface IUpdateQuantity {
   };
 }
 
-export type CartActions = IAddProduct | IRemoveProduct | IUpdateQuantity;
+export interface IToggleCartModal {
+  type: typeof TOGGLE_CART_MODAL;
+}
+
+export type CartActions =
+  | IAddProduct
+  | IRemoveProduct
+  | IUpdateQuantity
+  | IToggleCartModal;
