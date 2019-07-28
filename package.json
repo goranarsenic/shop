@@ -5,7 +5,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
+    "start": "serve -s dist",
     "dev": "webpack-dev-server --config config/webpack/webpack.dev.js",
     "prod": "webpack --config config/webpack/webpack.prod.js"
   },
@@ -38,6 +38,7 @@
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
     "sass-loader": "^7.1.0",
+    "serve": "^11.1.0",
     "style-loader": "^0.23.1",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
