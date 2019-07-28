@@ -14,10 +14,17 @@ export interface IProduct {
   image: string;
 }
 
+export interface IFilter {
+  name: string;
+  value: boolean;
+  query: string;
+  label: string;
+}
+
 export interface IProductsStore {
   readonly products: IProduct[];
   readonly searchText: string;
-  readonly filter: string;
+  readonly filters: IFilter[];
   readonly isFetching: boolean;
   readonly error: string | undefined;
 }

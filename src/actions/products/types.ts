@@ -2,7 +2,7 @@ import {
   GET_PRODUCTS,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
-  CHANGE_FILTER
+  TOGGLE_FILTER
 } from "../../constants/products";
 import { IProduct } from "../../types/products";
 
@@ -20,7 +20,7 @@ export interface IGetProductsError {
 }
 
 export interface IChangeFilter {
-  type: typeof CHANGE_FILTER;
+  type: typeof TOGGLE_FILTER;
   filter: string;
 }
 

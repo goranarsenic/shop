@@ -6,9 +6,9 @@ import {
   GET_PRODUCTS,
   GET_PRODUCTS_SUCCESS,
   GET_PRODUCTS_ERROR,
-  CHANGE_FILTER
+  TOGGLE_FILTER
 } from "../../constants/products";
-import { IProduct } from "../../types/products";
+import { IProduct, IFilter } from "../../types/products";
 
 const getProducts = (searchText: string): ActionTypes.IGetProducts => ({
   type: GET_PRODUCTS,
@@ -24,16 +24,16 @@ const getProductsError = (error: string): ActionTypes.IGetProductsError => ({
   type: GET_PRODUCTS_ERROR,
   error
 });
-const changeFilter = (filter: string): ActionTypes.IChangeFilter => ({
-  type: CHANGE_FILTER,
+const toggleFilter = (filter: string): ActionTypes.IChangeFilter => ({
+  type: TOGGLE_FILTER,
   filter
 });
 
-const searchProducts = (searchText: string) => {
+const searchProducts = (searchText: string, filters: IFilter[]) => {
   return (dispatch: any) => {
     dispatch(getProducts(searchText));
     axios
-      .get(getProductsURL(searchText))
+      .get(getProductsURL(searchText, filters))
       .then(response => {
         dispatch(getProductsSuccess(response.data.products));
       })
@@ -43,4 +43,4 @@ const searchProducts = (searchText: string) => {
   };
 };
 
-export { searchProducts, changeFilter };
+export { searchProducts, toggleFilter };

@@ -1,0 +1,16 @@
+@import "../../styles/includes.scss";
+
+.filters-container {
+  width: 100%;
+  display: flex;
+  @include label-medium;
+  padding-bottom: 20px;
+  .label {
+    margin: 0 10px;
+  }
+
+  .filter {
+    display: flex;
+    margin-right: 20px;
+  }
+}

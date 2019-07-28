@@ -13,17 +13,12 @@ interface IProps {
 }
 
 const Product = (props: IProps) => {
-  // don't show sale price if sale price is equal to regular price
-  const isOnSale =
-    props.product.onSale &&
-    props.product.salePrice !== props.product.regularPrice;
-
   const handleAddToCart = () => {
     props.onAddToCart(props.product);
   };
 
   const regularPriceClassName = classnames("regular-price", {
-    onSail: isOnSale
+    onSail: props.product.onSale
   });
 
   return (
@@ -40,7 +35,7 @@ const Product = (props: IProps) => {
             />
           </div>
           <div className="price-container">
-            {isOnSale && (
+            {props.product.onSale && (
               <div className="sale-info">
                 <p>SAVE {props.product.percentSavings}%</p>
               </div>
@@ -48,7 +43,7 @@ const Product = (props: IProps) => {
             <p className={regularPriceClassName}>
               {props.product.regularPrice}$
             </p>
-            {isOnSale && (
+            {props.product.onSale && (
               <p className="sale-price">{props.product.salePrice}$</p>
             )}
           </div>

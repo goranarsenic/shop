@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import Product from "./Product";
 import Modal from "../Modal";
 import Cart from "../Cart";
+import Filters from "../Filters";
 
-import { IProduct } from "../../types/products";
+import { IProduct, IFilter } from "../../types/products";
 import { ICartStore, ICartProduct } from "../../types/cart";
 
 import "./Products.scss";
@@ -14,12 +15,14 @@ interface IProps {
   cart: ICartStore;
   isFetching: boolean;
   error: string | undefined;
+  filters: IFilter[];
   changeFilter: (filter: string) => any;
-  searchProducts: (searchText: string) => any;
+  searchProducts: (searchText: string, filters: IFilter[]) => any;
   addProduct: (product: ICartProduct) => any;
   removeProduct: (sku: number) => any;
   updateQuantity: (sku: number, quantity: number) => any;
   toggleCartModal: () => any;
+  toggleFilter: (name: string) => any;
 }
 
 interface IState {
@@ -40,7 +43,9 @@ class Products extends Component<IProps, IState> {
       toggleCartModal,
       cart,
       updateQuantity,
-      removeProduct
+      removeProduct,
+      filters,
+      toggleFilter
     } = this.props;
 
     return (
@@ -68,6 +73,7 @@ class Products extends Component<IProps, IState> {
             </button>
           </form>
         </div>
+        <Filters filters={filters} toggleFilter={toggleFilter} />
         {isFetching && this.renderLoader()}
         {error && this.renderError(error)}
         {!isFetching && !error && this.renderProducts(products, searchText)}
@@ -135,7 +141,10 @@ class Products extends Component<IProps, IState> {
 
   private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    this.props.searchProducts(this.state.searchText);
+    const searchText = this.state.searchText;
+    if (searchText.length) {
+      this.props.searchProducts(searchText, this.props.filters);
+    }
   };
 
   private handleAddToCart = (product: IProduct) => {
