@@ -20,7 +20,7 @@ const cartReducer = (state = initialState, action: CartActions) => {
       return {
         ...state,
         products: [...state.products, action.product],
-        total: state.total + action.product.price
+        total: Math.round(state.total + action.product.price * 100) / 100
       };
     case REMOVE_PRODUCT:
       const filteredCartProducts = state.products.filter(
