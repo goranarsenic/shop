@@ -5,6 +5,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
+    "start": "node index.js",
     "dev": "webpack-dev-server --config config/webpack/webpack.dev.js",
     "prod": "webpack --config config/webpack/webpack.prod.js"
   },
