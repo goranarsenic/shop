@@ -14,7 +14,6 @@ export interface IProps {
 const Filters = (props: IProps) => {
   return (
     <div className="filters-container">
-      <p className="label">Filters:</p>
       {props.filters.map((filter: IFilter) => (
         <Filter
           key={filter.name}
