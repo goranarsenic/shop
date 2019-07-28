@@ -17,6 +17,9 @@ const PRODUCT_DETAILS = [
 const PAGE_SIZE = 30;
 
 export const getProductsURL = (searchText: string) =>
-  `${BASE_URL}/products(name=${searchText}*)?show=${PRODUCT_DETAILS.join()}&pageSize=${PAGE_SIZE}&apiKey=${
+  `${BASE_URL}/products(search=${searchText.replace(
+    / /g,
+    "&search="
+  )})?show=${PRODUCT_DETAILS.join()}&pageSize=${PAGE_SIZE}&apiKey=${
     process.env.API_KEY
   }&format=json`;
